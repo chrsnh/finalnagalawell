@@ -1,5 +1,4 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Blog from "./pages/blog/Blog";
 import MyState from "./context/data/myState";
@@ -11,25 +10,45 @@ import Dashboard from "./pages/admin/dashboard/Dashboard";
 import NoPage from "./pages/nopage/Nopage";
 import CreateBlog from "./pages/admin/createBlog/CreateBlog";
 
-
 function App() {
   return (
-    <MyState>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/allblogs" element={<AllBlogs />} />
-          <Route path="/bloginfo/:id" element={<BlogInfo />} />
-          <Route path="/adminloggin" element={<AdminLogin />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/createblog" element={<CreateBlog />} />
-          <Route path="/*" element={<NoPage />} />
-        </Routes>
-        <Toaster/>
-      </Router>
-    </MyState>
+    <div>
+      <MyState>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/allblogs" element={<AllBlogs />} />
+            <Route path="/bloginfo/:id" element={<BlogInfo />} />
+            <Route path="/adminlogin" element={<AdminLogin />} />
+            <Route path="/dashboard" element={
+              <ProtectedRouteForAdmin>
+                <Dashboard />
+              </ProtectedRouteForAdmin>
+            } />
+            <Route path="/createblog" element={
+              <ProtectedRouteForAdmin>
+                <CreateBlog />
+              </ProtectedRouteForAdmin>
+            } />
+            <Route path="/*" element={<NoPage />} />
+          </Routes>
+          <Toaster />
+        </Router>
+      </MyState>
+    </div>
+
   )
 }
 
 export default App
+
+export const ProtectedRouteForAdmin = ({ children }) => {
+  const user = JSON.parse(localStorage.getItem('user'))
+  if (user?.user?.email === "test@gmail.com") {
+    return children
+  }
+  else {
+    return <Navigate to={'/adminlogin'} />
+  }
+}
