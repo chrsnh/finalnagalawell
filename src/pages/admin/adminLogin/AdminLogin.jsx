@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import {
     Card,
     CardHeader,
@@ -8,11 +8,10 @@ import {
     Typography,
 } from "@material-tailwind/react";
 import myContext from "../../../context/data/myContext";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../firebase/FirebaseConfig";
-
 
 export default function AdminLogin() {
     const context = useContext(myContext);
@@ -23,25 +22,21 @@ export default function AdminLogin() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    //* Login Function
     const login = async () => {
         if(!email || !password) {
-            return toast.error("Fill all required fields")
+            return toast.success('Fill all required fields')
         }
         try {
             const result = await signInWithEmailAndPassword(auth, email, password);
             toast.success('Login Success')
             localStorage.setItem('admin', JSON.stringify(result));
-            navigate('/dashboard');
-        } catch (error) {
-            toast.error('Use the provided account credentials below and try again.')
+            navigate('/dashboard')
+        } catch {
+            toast.error('Login Failed')
             console.log(error)
         }
     }
 
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
 
     return (
         <div className="flex justify-center items-center h-screen">
@@ -63,8 +58,8 @@ export default function AdminLogin() {
                     className="m-0 grid place-items-center rounded-b-none py-8 px-4 text-center"
                     style={{
                         background: mode === 'dark'
-                            ? 'rgb(227, 115, 131)'
-                            : 'rgb(227, 115, 131)'
+                            ? 'rgb(226, 232, 240)'
+                            : 'rgb(30, 41, 59)'
                     }}
                 >
                     <div className="mb-4 rounded-full border border-white/10 bg-white/10 p-2 text-white">
@@ -75,19 +70,13 @@ export default function AdminLogin() {
                         </div>
                     </div>
 
-                    <Typography variant="h6" style={{
+                    {/* Top Haeding  */}
+                    <Typography variant="h4" style={{
                         color: mode === 'dark'
                             ? 'rgb(30, 41, 59)'
                             : 'rgb(226, 232, 240)'
                     }}>
-                        Email: test@gmail.com
-                    </Typography>
-                    <Typography variant="h6" style={{
-                        color: mode === 'dark'
-                            ? 'rgb(30, 41, 59)'
-                            : 'rgb(226, 232, 240)'
-                    }}>
-                        Password: test1234
+                        Admin Login
                     </Typography>
                 </CardHeader>
 
@@ -101,7 +90,7 @@ export default function AdminLogin() {
                                 label="Email"
                                 name="email"
                                 value={email}
-                                onChange={(e)=>setEmail(e.target.value)}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
                         {/* Second Input  */}
@@ -110,7 +99,7 @@ export default function AdminLogin() {
                                 type="password"
                                 label="Password"
                                 value={password}
-                                onChange={(e)=>setPassword(e.target.value)}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
                         {/* Login Button  */}
@@ -118,8 +107,8 @@ export default function AdminLogin() {
                         onClick={login}
                             style={{
                                 background: mode === 'dark'
-                                    ? 'rgb(227, 115, 131)'
-                                    : 'rgb(227, 115, 131)',
+                                    ? 'rgb(226, 232, 240)'
+                                    : 'rgb(30, 41, 59)',
                                 color: mode === 'dark'
                                     ? 'rgb(30, 41, 59)'
                                     : 'rgb(226, 232, 240)'
@@ -133,4 +122,4 @@ export default function AdminLogin() {
 
 
     );
-}
+} 

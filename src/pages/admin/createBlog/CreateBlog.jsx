@@ -1,79 +1,28 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { BsFillArrowLeftCircleFill } from "react-icons/bs"
 import myContext from '../../../context/data/myContext';
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
     Button,
     Typography,
 } from "@material-tailwind/react";
-import { Timestamp, addDoc, collection } from 'firebase/firestore';
-import toast from 'react-hot-toast';
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
-import { fireDB, storage } from '../../../firebase/FirebaseConfig';
 function CreateBlog() {
     const context = useContext(myContext);
     const { mode } = context;
 
-    const [blogs, setBlogs] = useState({
-        title : "",
-        category : "",
-        content : "",
-        time : Timestamp.now(),
-    });
+    const [blogs, setBlogs] = useState('');
     const [thumbnail, setthumbnail] = useState();
 
     const [text, settext] = useState('');
     console.log("Value: ",);
     console.log("text: ", text);
 
-    const navigate = useNavigate();
-
-    const addPost = async () => {
-        if(blogs.title === "" || blogs.category === "" || blogs.content === "" || blogs.thumbnail === "") {
-            return toast.error("All fields are required")
-        }
-        uploadImage();
-    }
-
-    const uploadImage = () => {
-        if (!thumbnail) return;
-        const imageRef = ref(storage, `blogimage/${thumbnail.name}`);
-        uploadBytes(imageRef, thumbnail).then((snapshot) => {
-            getDownloadURL(snapshot.ref).then((url) => {
-                const productRef = collection(fireDB, "blogPost")
-                try {
-                    addDoc(productRef, {
-                        blogs,
-                        thumbnail: url,
-                        time: Timestamp.now(),
-                        date: new Date().toLocaleString(
-                            "en-us",
-                            {
-                                month: "short",
-                                day: "2-digit",
-                                year: "numeric",
-                            }
-                        )
-                    })
-                    navigate('/dashboard')
-                    toast.success('Post Added Successfully')
-                } catch (error) {
-                    toast.error(error)
-                    console.log(error)
-                }
-            })
-        })
-    }
-
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
-
     // Create markup function 
     function createMarkup(c) {
         return { __html: c };
     }
+    
     return (
         <div className=' container mx-auto max-w-5xl py-6'>
             <div className="p-5" style={{
@@ -155,8 +104,6 @@ function CreateBlog() {
                                 : 'rgb(226, 232, 240)'
                         }}
                         name="title"
-                        value={blogs.title}
-                        onChange={(e)=> setBlogs({...blogs, title : e.target.value})}
                     />
                 </div>
 
@@ -175,8 +122,6 @@ function CreateBlog() {
                                 : 'rgb(226, 232, 240)'
                         }}
                         name="category"
-                        value={blogs.category}
-                        onChange={(e)=> setBlogs({...blogs, category : e.target.value})}
                     />
                 </div>
 
@@ -184,17 +129,19 @@ function CreateBlog() {
                 <Editor
                     apiKey='xsxk3swsd0pauzuj20a9f1e9c1n7h7dtrt43jx4k9zgydi5b'
                     onEditorChange={(newValue, editor) => {
-                        setBlogs({ ...blogs, content: newValue });
+                        setBlogs({ blogs, content: newValue });
                         settext(editor.getContent({ format: 'text' }));
                     }}
                     onInit={(evt, editor) => {
                         settext(editor.getContent({ format: 'text' }));
                     }}
+                    init={{
+                        plugins: 'a11ychecker advcode advlist advtable anchor autocorrect autolink autoresize autosave casechange charmap checklist code codesample directionality editimage emoticons export footnotes formatpainter fullscreen help image importcss inlinecss insertdatetime link linkchecker lists media mediaembed mentions mergetags nonbreaking pagebreak pageembed permanentpen powerpaste preview quickbars save searchreplace table tableofcontents template  tinydrive tinymcespellchecker typography visualblocks visualchars wordcount'
+                    }}
                 />
 
                 {/* Five Submit Button  */}
                 <Button className=" w-full mt-5"
-                onClick={addPost}
                     style={{
                         background: mode === 'dark'
                             ? 'rgb(226, 232, 240)'

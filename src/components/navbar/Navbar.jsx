@@ -8,21 +8,22 @@ import {
 } from "@material-tailwind/react";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AiOutlineShareAlt, AiOutlineSearch } from 'react-icons/ai'
 import myContext from "../../context/data/myContext";
 import SearchDialog from "../searchDialog/SearchDialog";
 import ShareDialogBox from "../shareDialogBox/ShareDialogBox";
+
 
 export default function Nav() {
     const [openNav, setOpenNav] = React.useState(false);
 
     const context = useContext(myContext);
     const { mode, toggleMode } = context;
-    
-    //* Admin
+
     const admin = localStorage.getItem('admin');
 
 
-    //* All NavList 
+    // All NavList 
     const navList = (
         <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
             <Typography
@@ -47,22 +48,17 @@ export default function Nav() {
                     Blogs
                 </Link>
             </Typography>
-            {!admin
-                ?
-                <Typography
-                    as="li"
-                    variant="small"
-                    color="blue-gray"
-                    className="p-1 font-normal"
-                    style={{ color: mode === 'dark' ? 'white' : 'white' }}
-                >
-                    <Link to={'/adminlogin'} className="flex items-center">
-                        Admin Login
-                    </Link>
-                </Typography>
-                :
-                ""
-            }
+            <Typography
+                as="li"
+                variant="small"
+                color="blue-gray"
+                className="p-1 font-normal"
+                style={{ color: mode === 'dark' ? 'white' : 'white' }}
+            >
+                <Link to={'/adminlogin'} className="flex items-center">
+                    Login
+                </Link>
+            </Typography>
         </ul>
     );
 
@@ -105,37 +101,37 @@ export default function Nav() {
 
                         {/* Search Icon */}
                         <div>
-                            {/* <AiOutlineSearch size={20} color="white" /> */}
                             <SearchDialog />
                         </div>
 
                         {/* Share Icon */}
                         <div className="hidden lg:block">
-                            {/* <AiOutlineShareAlt size={20} color="white" /> */}
                             <ShareDialogBox />
                         </div>
 
                         {/* Admin Profile Pic */}
                         <div>
-                            <Link to={'/dashboard'}>
-                                <div className="">
-                                    <Avatar
-                                        key={1}
-                                        src={'https://cdn-icons-png.flaticon.com/128/3135/3135715.png'}
-                                        alt="avatar"
-                                        withBorder={true}
-                                        className="p-0.5 text-red-500 w-10 h-10"
-                                        style={{
-                                            border:
-                                                mode === 'dark'
-                                                    ?
-                                                    '2px solid rgb(226, 232, 240)'
-                                                    :
-                                                    '2px solid rgb(30, 41, 59)'
-                                        }}
-                                    />
-                                </div>
-                            </Link>
+                            {admin
+                                ? <Link to={'/dashboard'}>
+                                    <div className="">
+                                        <Avatar
+                                            key={1}
+                                            src={'https://cdn-icons-png.flaticon.com/128/3135/3135715.png'}
+                                            alt="avatar"
+                                            withBorder={true}
+                                            className="p-0.5 text-red-500 w-10 h-10"
+                                            style={{
+                                                border:
+                                                    mode === 'dark'
+                                                        ?
+                                                        '2px solid rgb(226, 232, 240)'
+                                                        :
+                                                        '2px solid rgb(30, 41, 59)'
+                                            }}
+                                        />
+                                    </div>
+                                </Link>
+                            : ""}
                         </div>
 
                         {/* dark And Light Button */}

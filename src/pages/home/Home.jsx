@@ -5,13 +5,13 @@ import BlogPostCard from "../../components/blogPostCard/BlogPostCard";
 import Loader from "../../components/loader/Loader";
 
 function Home() {
-    return (
-        <Layout>
-            <HeroSection/>
-            <BlogPostCard/>
-            <Loader/>
-        </Layout>
-    )
+  return (
+    <Layout>
+        <HeroSection />
+        <BlogPostCard />
+        <Loader/>
+    </Layout>
+  )
 }
 
 export default Home

@@ -8,7 +8,7 @@ import BlogInfo from "./pages/blogInfo/BlogInfo";
 import AdminLogin from "./pages/admin/adminLogin/AdminLogin";
 import Dashboard from "./pages/admin/dashboard/Dashboard";
 import NoPage from "./pages/nopage/Nopage";
-import CreateBlog from "./pages/admin/createBlog/CreateBlog";
+import CreateBlog from "./pages/admin/createBlog/createBlog";
 
 function App() {
   return (
@@ -37,18 +37,17 @@ function App() {
         </Router>
       </MyState>
     </div>
-
   )
 }
 
 export default App
 
 export const ProtectedRouteForAdmin = ({ children }) => {
-  const user = JSON.parse(localStorage.getItem('user'))
-  if (user?.user?.email === "test@gmail.com") {
+  const admin = JSON.parse(localStorage.getItem('admin'))
+  if (admin?.user?.email === "test@gmail.com") {
     return children
   }
   else {
-    return <Navigate to={'/adminlogin'} />
+    return <Navigate to={'/adminlogin'}/>
   }
 }
