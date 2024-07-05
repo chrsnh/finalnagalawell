@@ -7,8 +7,8 @@ import AllBlogs from "./pages/allBlogs/AllBlogs";
 import BlogInfo from "./pages/blogInfo/BlogInfo";
 import AdminLogin from "./pages/admin/adminLogin/AdminLogin";
 import Dashboard from "./pages/admin/dashboard/Dashboard";
+import CreateBlog from "./pages/admin/createBlog/CreateBlog";
 import NoPage from "./pages/nopage/Nopage";
-import CreateBlog from "./pages/admin/createBlog/createBlog";
 
 function App() {
   return (
