@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import myContext from '../../context/data/myContext';
 import Layout from '../../components/layout/Layout';
 import { useNavigate } from 'react-router';
@@ -8,6 +8,9 @@ function AllBlogs() {
     const { mode, getAllBlog } = context;
 
     const navigate = useNavigate();
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     return (
         <Layout>
             <section className="text-gray-600 body-font">
@@ -42,10 +45,10 @@ function AllBlogs() {
                                                 }}
                                                 className={`h-full shadow-lg  hover:-translate-y-1 cursor-pointer hover:shadow-gray-400
                                                 ${mode === 'dark'
-                                                    ? 'shadow-gray-700'
-                                                    : 'shadow-xl'
+                                                        ? 'shadow-gray-700'
+                                                        : 'shadow-xl'
                                                     } 
-                                                rounded-xl overflow-hidden`} 
+                                                rounded-xl overflow-hidden`}
                                             >
                                                 {/* Blog Thumbnail  */}
                                                 <img onClick={() => navigate(`/bloginfo/${id}`)} className=" w-full" src={thumbnail} alt="blog" />

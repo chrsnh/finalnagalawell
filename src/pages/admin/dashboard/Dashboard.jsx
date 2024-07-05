@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Layout from '../../../components/layout/Layout'
 import myContext from '../../../context/data/myContext';
 import { Button } from '@material-tailwind/react';
@@ -16,6 +16,10 @@ function Dashboard() {
         navigate('/')
     }
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return (
         <Layout>
             <div className="py-10">
@@ -24,27 +28,27 @@ function Dashboard() {
                     <div className="left">
                         <img
                             className=" w-40 h-40  object-cover rounded-full border-2 border-pink-600 p-1"
-                            src={'https://cdn-icons-png.flaticon.com/128/3135/3135715.png'} alt="profile"
+                            src={'https://i.pinimg.com/564x/4c/c6/65/4cc665559ef822b3e0f72d8b9d45216b.jpg'} alt="profile"
                         />
                     </div>
                     <div className="right">
                         <h1
-                            className='text-center font-bold text-2xl mb-2'
+                            className='text-left font-bold text-2xl mb-2'
                             style={{ color: mode === 'dark' ? 'white' : 'black' }}
                         >
-                            Kamal Nayan Upadhyay
+                            Melchor 
                         </h1>
 
                         <h2
                             style={{ color: mode === 'dark' ? 'white' : 'black' }} className="font-semibold">
-                            Software Developer
+                            Traveller
                         </h2>
                         <h2
-                            style={{ color: mode === 'dark' ? 'white' : 'black' }} className="font-semibold">knupadhyay784@gmail.com
+                            style={{ color: mode === 'dark' ? 'white' : 'black' }} className="font-semibold">test@gmail.com
                         </h2>
                         <h2
                             style={{ color: mode === 'dark' ? 'white' : 'black' }} className="font-semibold">
-                            <span>Total Blog : </span>  15
+                            <span>Total Blog : </span>  7
                         </h2>
                         <div className=" flex gap-2 mt-2">
                             <Link to={'/createblog'}>

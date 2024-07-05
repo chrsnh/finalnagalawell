@@ -19,7 +19,7 @@ export default function ShareDialogBox() {
                 <AiOutlineShareAlt onClick={handleOpen} style={{ color: mode === 'dark' ? 'white' : 'white' }} size={20} />
             </div>
             {/* Dialog  */}
-            <Dialog className=" relative right-[1em] w-[25em]  md:right-0 md:w-0 lg:right-0 lg:w-0" open={open} handler={handleOpen} style={{ background: mode === 'light' ? '#2f3542' : '#2f3542', color: mode === 'dark' ? 'white' : 'black' }}>
+            <Dialog className=" relative right-[1em] w-[25em]  md:right-0 md:w-0 lg:right-0 lg:w-0" open={open} handler={handleOpen} style={{ background: mode === 'light' ? '#C9A9A6' : '#C9A9A6', color: mode === 'dark' ? 'white' : 'black' }}>
                 {/* DialogBody  */}
                 <DialogBody >
                     <div className="flex justify-center flex-wrap  sm:mx-auto sm:mb-2 -mx-2  mt-4 mb-2 ">
@@ -77,7 +77,7 @@ export default function ShareDialogBox() {
                     </div>
 
                     <div className=" text-center">
-                        <h1 className=" text-gray-600">Powered By Devknus</h1>
+                        <h1 className=" text-gray-600">Powered By Alruch</h1>
                     </div>
                 </DialogBody>
             </Dialog>

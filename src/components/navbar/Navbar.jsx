@@ -8,7 +8,6 @@ import {
 } from "@material-tailwind/react";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { AiOutlineShareAlt, AiOutlineSearch } from 'react-icons/ai'
 import myContext from "../../context/data/myContext";
 import SearchDialog from "../searchDialog/SearchDialog";
 import ShareDialogBox from "../shareDialogBox/ShareDialogBox";
@@ -67,7 +66,7 @@ export default function Nav() {
             {/* Navbar  */}
             <Navbar
                 className="sticky inset-0 z-20 h-max max-w-full border-none rounded-none py-2 px-4 lg:px-8 lg:py-2"
-                style={{ background: mode === 'dark' ? 'rgb(30, 41, 59)' : '#30336b' }}>
+                style={{ background: mode === 'dark' ? 'rgb(250, 160, 160)' : '#FAA0A0' }}>
 
                 {/* Desktop View  */}
                 <div className="flex items-center justify-between text-blue-gray-900">
@@ -82,11 +81,11 @@ export default function Nav() {
                             {/* Logo Image  */}
                             <img
                                 className=' w-10 h-10 '
-                                src='https://cdn-icons-png.flaticon.com/128/3685/3685253.png'
+                                src='https://cdn-icons-png.flaticon.com/128/3762/3762131.png'
                             />
                             {/* Logo Text  */}
                             <span>
-                                Devknus
+                                Gala Well
                             </span>
                         </Typography>
                     </Link>
@@ -116,7 +115,7 @@ export default function Nav() {
                                     <div className="">
                                         <Avatar
                                             key={1}
-                                            src={'https://cdn-icons-png.flaticon.com/128/3135/3135715.png'}
+                                            src={'https://i.pinimg.com/564x/4c/c6/65/4cc665559ef822b3e0f72d8b9d45216b.jpg'}
                                             alt="avatar"
                                             withBorder={true}
                                             className="p-0.5 text-red-500 w-10 h-10"

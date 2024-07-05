@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
     Card,
     CardHeader,
@@ -23,7 +23,7 @@ export default function AdminLogin() {
     const [password, setPassword] = useState('');
 
     const login = async () => {
-        if(!email || !password) {
+        if (!email || !password) {
             return toast.success('Fill all required fields')
         }
         try {
@@ -32,10 +32,14 @@ export default function AdminLogin() {
             localStorage.setItem('admin', JSON.stringify(result));
             navigate('/dashboard')
         } catch {
-            toast.error('Login Failed')
+            toast.error('Use the provided account credentials below and try again.')
             console.log(error)
         }
     }
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
 
     return (
@@ -58,8 +62,8 @@ export default function AdminLogin() {
                     className="m-0 grid place-items-center rounded-b-none py-8 px-4 text-center"
                     style={{
                         background: mode === 'dark'
-                            ? 'rgb(226, 232, 240)'
-                            : 'rgb(30, 41, 59)'
+                            ? 'rgb(227, 115, 131)'
+                            : 'rgb(227, 115, 131)'
                     }}
                 >
                     <div className="mb-4 rounded-full border border-white/10 bg-white/10 p-2 text-white">
@@ -76,7 +80,23 @@ export default function AdminLogin() {
                             ? 'rgb(30, 41, 59)'
                             : 'rgb(226, 232, 240)'
                     }}>
-                        Admin Login
+                        Login
+                    </Typography>
+
+                    <Typography variant="h6" style={{
+                        color: mode === 'dark'
+                            ? 'rgb(30, 41, 59)'
+                            : 'rgb(226, 232, 240)'
+                    }}>
+                        Email: Test@gmail.com
+                    </Typography>
+
+                    <Typography variant="h6" style={{
+                        color: mode === 'dark'
+                            ? 'rgb(30, 41, 59)'
+                            : 'rgb(226, 232, 240)'
+                    }}>
+                        Password: test1234
                     </Typography>
                 </CardHeader>
 
@@ -104,11 +124,11 @@ export default function AdminLogin() {
                         </div>
                         {/* Login Button  */}
                         <Button
-                        onClick={login}
+                            onClick={login}
                             style={{
                                 background: mode === 'dark'
-                                    ? 'rgb(226, 232, 240)'
-                                    : 'rgb(30, 41, 59)',
+                                    ? 'rgb(227, 115, 131)'
+                                    : 'rgb(227, 115, 131)',
                                 color: mode === 'dark'
                                     ? 'rgb(30, 41, 59)'
                                     : 'rgb(226, 232, 240)'

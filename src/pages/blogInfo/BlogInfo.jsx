@@ -93,6 +93,7 @@ function BlogInfo() {
 
     useEffect(() => {
         getcomment()
+        window.scrollTo(0, 0)
     }, []);
 
     return (
@@ -141,7 +142,7 @@ function BlogInfo() {
                             </div>
                         </div>
                     }
-                    
+
                     <Comment
                         addComment={addComment}
                         commentText={commentText}

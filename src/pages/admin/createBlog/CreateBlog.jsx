@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { BsFillArrowLeftCircleFill } from "react-icons/bs"
 import myContext from '../../../context/data/myContext';
@@ -30,9 +30,6 @@ function CreateBlog() {
     const navigate = useNavigate();
 
     const addPost = async () => {
-        if (blogs.title === "" || blogs.category === "" || blogs.content === "" || blogs.thumbnail === "") {
-            toast.error('Please Fill All Fields');
-        }
         uploadImage();
     }
 
@@ -68,6 +65,10 @@ function CreateBlog() {
         });
     }
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     // Create markup function 
     function createMarkup(c) {
         return { __html: c };
@@ -78,7 +79,7 @@ function CreateBlog() {
             <div className="p-5" style={{
                 background: mode === 'dark'
                     ? '#353b48'
-                    : 'rgb(226, 232, 240)',
+                    : 'rgb(243, 207, 198)',
                 borderBottom: mode === 'dark'
                     ? ' 4px solid rgb(226, 232, 240)'
                     : ' 4px solid rgb(30, 41, 59)'
@@ -189,18 +190,15 @@ function CreateBlog() {
                     onInit={(evt, editor) => {
                         settext(editor.getContent({ format: 'text' }));
                     }}
-                    init={{
-                        plugins: 'a11ychecker advcode advlist advtable anchor autocorrect autolink autoresize autosave casechange charmap checklist code codesample directionality editimage emoticons export footnotes formatpainter fullscreen help image importcss inlinecss insertdatetime link linkchecker lists media mediaembed mentions mergetags nonbreaking pagebreak pageembed permanentpen powerpaste preview quickbars save searchreplace table tableofcontents template  tinydrive tinymcespellchecker typography visualblocks visualchars wordcount'
-                    }}
                 />
 
                 {/* Five Submit Button  */}
                 <Button className=" w-full mt-5"
-                onClick={addPost}
+                    onClick={addPost}
                     style={{
                         background: mode === 'dark'
-                            ? 'rgb(226, 232, 240)'
-                            : 'rgb(30, 41, 59)',
+                            ? 'rgb(227, 115, 131)'
+                            : 'rgb(227, 115, 131)',
                         color: mode === 'dark'
                             ? 'rgb(30, 41, 59)'
                             : 'rgb(226, 232, 240)'
