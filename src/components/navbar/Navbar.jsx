@@ -47,17 +47,19 @@ export default function Nav() {
                     Blogs
                 </Link>
             </Typography>
-            <Typography
-                as="li"
-                variant="small"
-                color="blue-gray"
-                className="p-1 font-normal"
-                style={{ color: mode === 'dark' ? 'white' : 'white' }}
-            >
-                <Link to={'/adminlogin'} className="flex items-center">
-                    Login
-                </Link>
-            </Typography>
+            {!admin && (
+                <Typography
+                    as="li"
+                    variant="small"
+                    color="blue-gray"
+                    className="p-1 font-normal"
+                    style={{ color: mode === 'dark' ? 'white' : 'white' }}
+                >
+                    <Link to={'/adminlogin'} className="flex items-center">
+                        Login
+                    </Link>
+                </Typography>
+            )}
         </ul>
     );
 
@@ -130,7 +132,7 @@ export default function Nav() {
                                         />
                                     </div>
                                 </Link>
-                            : ""}
+                                : ""}
                         </div>
 
                         {/* dark And Light Button */}

@@ -163,6 +163,33 @@ function CreateBlog() {
                     color="blue-gray"
                     className="mb-2 font-semibold"
                 >
+                    Blog Creator:
+                </Typography>
+                <div className="mb-3">
+                    <input
+                        label="Enter your Category"
+                        className={`shadow-[inset_0_0_4px_rgba(0,0,0,0.6)] w-full rounded-md p-1.5 
+                 outline-none ${mode === 'dark'
+                                ? 'placeholder-black'
+                                : 'placeholder-black'}`}
+                        style={{
+                            background: mode === 'dark'
+                                ? '#dcdde1'
+                                : 'rgb(226, 232, 240)'
+                        }}
+                        name="category"
+                        value={blogs.content}
+                        onChange={(e) => setBlogs({ ...blogs, content: e.target.value })}
+                    />
+                </div>
+
+
+                {/* Third Category Input  */}
+                <Typography
+                    variant="small"
+                    color="blue-gray"
+                    className="mb-2 font-semibold"
+                >
                     Blog Body:
                 </Typography>
                 <div className="mb-3">
@@ -183,6 +210,7 @@ function CreateBlog() {
                         onChange={(e) => setBlogs({ ...blogs, category: e.target.value })}
                     />
                 </div>
+
 
                 {/* Five Submit Button  */}
                 <Button className=" w-full mt-5"

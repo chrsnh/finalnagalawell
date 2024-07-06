@@ -196,7 +196,7 @@ function Dashboard() {
 
                                                     {/* Delete Blog  */}
                                                     <td
-                                                        onClick={() => deleteBlogs(id)}
+                                                        onClick={() => deleteBlogs(id, user)}
                                                         style={{ color: mode === 'dark' ? 'white' : 'black' }}
                                                         className="px-6 py-4"
                                                     >

@@ -77,13 +77,14 @@ function AllBlogs() {
                                                     </h1>
 
                                                     {/* Blog Category  */}
-                                                    <h4 className="title-font text-lg text-gray-900 mb-3" style={{
+                                                    <h3 className="title-font text-lg text-gray-900 mb-3" style={{
                                                         color: mode === 'dark'
                                                             ? 'rgb(226, 232, 240)'
                                                             : 'rgb(30, 41, 59)'
                                                     }}>
                                                         {item.blogs.category}
-                                                    </h4>
+                                                    </h3>
+                                                    <h6>Created By: {item.blogs.content}</h6>
                                                 </div>
                                             </div>
                                         </div>
