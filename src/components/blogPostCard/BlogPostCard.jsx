@@ -66,7 +66,6 @@ function BlogPostCard() {
                           }}>
                             {item.blogs.category}
                           </h4>
-                          <h6>Created By: {item.blogs.content}</h6>
                         </div>
                       </div>
                     </div>
