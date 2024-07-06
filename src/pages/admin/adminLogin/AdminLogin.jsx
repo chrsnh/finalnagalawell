@@ -8,7 +8,7 @@ import {
     Typography,
 } from "@material-tailwind/react";
 import myContext from "../../../context/data/myContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../firebase/FirebaseConfig";
@@ -30,9 +30,9 @@ export default function AdminLogin() {
             const result = await signInWithEmailAndPassword(auth, email, password);
             toast.success('Login Success')
             localStorage.setItem('admin', JSON.stringify(result));
-            navigate('/dashboard')
+            navigate('/')
         } catch {
-            toast.error('Use the provided account credentials below and try again.')
+            toast.error('Register ka muna')
             console.log(error)
         }
     }
@@ -46,31 +46,17 @@ export default function AdminLogin() {
         <div className="flex justify-center items-center h-screen">
 
             {/* Card  */}
-            <Card
-                className="w-full max-w-[24rem]"
-                style={{
-                    background: mode === 'dark'
-                        ? 'rgb(30, 41, 59)'
-                        : 'rgb(226, 232, 240)'
-                }}
-            >
+            <Card className="w-full max-w-[24rem]">
                 {/* CardHeader */}
                 <CardHeader
-                    color="blue"
-                    floated={false}
-                    shadow={false}
+                    color="pink"
                     className="m-0 grid place-items-center rounded-b-none py-8 px-4 text-center"
-                    style={{
-                        background: mode === 'dark'
-                            ? 'rgb(227, 115, 131)'
-                            : 'rgb(227, 115, 131)'
-                    }}
                 >
                     <div className="mb-4 rounded-full border border-white/10 bg-white/10 p-2 text-white">
                         <div className=" flex justify-center">
                             {/* Image  */}
-                            <img src="https://cdn-icons-png.flaticon.com/128/727/727399.png" 
-                            className="h-20 w-20"
+                            <img src="https://cdn-icons-png.flaticon.com/128/727/727399.png"
+                                className="h-20 w-20"
                             />
                         </div>
                     </div>
@@ -82,22 +68,6 @@ export default function AdminLogin() {
                             : 'rgb(226, 232, 240)'
                     }}>
                         Login
-                    </Typography>
-
-                    <Typography variant="h6" style={{
-                        color: mode === 'dark'
-                            ? 'rgb(30, 41, 59)'
-                            : 'rgb(226, 232, 240)'
-                    }}>
-                        Email: Test@gmail.com
-                    </Typography>
-
-                    <Typography variant="h6" style={{
-                        color: mode === 'dark'
-                            ? 'rgb(30, 41, 59)'
-                            : 'rgb(226, 232, 240)'
-                    }}>
-                        Password: test1234
                     </Typography>
                 </CardHeader>
 
@@ -124,18 +94,12 @@ export default function AdminLogin() {
                             />
                         </div>
                         {/* Login Button  */}
-                        <Button
-                            onClick={login}
-                            style={{
-                                background: mode === 'dark'
-                                    ? 'rgb(227, 115, 131)'
-                                    : 'rgb(227, 115, 131)',
-                                color: mode === 'dark'
-                                    ? 'rgb(30, 41, 59)'
-                                    : 'rgb(226, 232, 240)'
-                            }}>
-                            Login
+                        <Button onClick={login} color="pink" fullWidth>
+                            login
                         </Button>
+                        <Typography className="mt-4 text-center">
+                            Don't have an account? <Link to="/adminregister" className="text-blue-500">Register</Link>
+                        </Typography>
                     </form>
                 </CardBody>
             </Card>
