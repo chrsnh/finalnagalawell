@@ -126,16 +126,16 @@ function BlogInfo() {
                             <div className="category">
                                 <div
                                     className={`[&> h1]:text-[32px] [&>h1]:font-bold  [&>h1]:mb-2.5
-                            ${mode === 'dark' ? '[&>h1]:text-[#ff4d4d]' : '[&>h1]:text-black'}
-                            ${mode === 'dark' ? '[&>h2]:text-white' : '[&>h2]:text-black'}
-                            ${mode === 'dark' ? '[&>h3]:text-white' : '[&>h3]:text-black'}
-                            ${mode === 'dark' ? '[&>h4]:text-white' : '[&>h4]:text-black'}
-                            ${mode === 'dark' ? '[&>h5]:text-white' : '[&>h5]:text-black'}
-                            ${mode === 'dark' ? '[&>h6]:text-white' : '[&>h6]:text-black'}
-                            ${mode === 'dark' ? '[&>p]:text-[#7efff5]' : '[&>p]:text-black'}
-                            ${mode === 'dark' ? '[&>ul]:text-white' : '[&>ul]:text-black'}
-                            ${mode === 'dark' ? '[&>ol]:text-white' : '[&>ol]:text-black'}
-                            ${mode === 'dark' ? '[&>ol]:text-white' : '[&>ol]:text-black'}
+                            ${mode === 'dark' ? '[&>h1]:text-[#ff4d4d]' : '[&>h1]:text-white'}
+                            ${mode === 'dark' ? '[&>h2]:text-white' : '[&>h2]:text-white'}
+                            ${mode === 'dark' ? '[&>h3]:text-white' : '[&>h3]:text-white'}
+                            ${mode === 'dark' ? '[&>h4]:text-white' : '[&>h4]:text-white'}
+                            ${mode === 'dark' ? '[&>h5]:text-white' : '[&>h5]:text-white'}
+                            ${mode === 'dark' ? '[&>h6]:text-white' : '[&>h6]:text-white'}
+                            ${mode === 'dark' ? '[&>p]:text-[#7efff5]' : '[&>p]:text-white'}
+                            ${mode === 'dark' ? '[&>ul]:text-white' : '[&>ul]:text-white'}
+                            ${mode === 'dark' ? '[&>ol]:text-white' : '[&>ol]:text-white'}
+                            ${mode === 'dark' ? '[&>ol]:text-white' : '[&>ol]:text-white'}
                             `}
                                     dangerouslySetInnerHTML={createMarkup(getBlogs?.blogs?.category)}>
                                 </div>

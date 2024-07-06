@@ -10,14 +10,18 @@ function AllBlogs() {
     const navigate = useNavigate();
     useEffect(() => {
         window.scrollTo(0, 0)
-    }, [])
+    }, []);
+
+    // Reverse the blogs to have the latest one first
+    const reversedBlogs = [...getAllBlog].reverse();
+
     return (
         <Layout>
             <section className="text-gray-600 body-font">
                 <div className="container px-5 py-10 mx-auto max-w-7xl ">
                     {/* Top Heading  */}
                     <div className="mb-5">
-                        <h1 className=' text-center text-2xl font-bold'
+                        <h1 className='text-center text-2xl font-bold'
                             style={{ color: mode === 'dark' ? 'white' : 'black' }}>
                             All Blogs
                         </h1>
@@ -25,10 +29,10 @@ function AllBlogs() {
                     {/* Main Content  */}
                     <div className="flex flex-wrap justify-center -m-4 mb-5">
                         {/* Card 1  */}
-                        {getAllBlog.length > 0
+                        {reversedBlogs.length > 0
                             ?
                             <>
-                                {getAllBlog.map((item, index) => {
+                                {reversedBlogs.map((item, index) => {
                                     const { thumbnail, id, date } = item
                                     console.log(item)
                                     return (
@@ -39,11 +43,10 @@ function AllBlogs() {
                                                         ? 'rgb(30, 41, 59)'
                                                         : 'white',
                                                     borderBottom: mode === 'dark'
-                                                        ?
-                                                        ' 4px solid rgb(226, 232, 240)'
-                                                        : ' 4px solid rgb(30, 41, 59)'
+                                                        ? '4px solid rgb(226, 232, 240)'
+                                                        : '4px solid rgb(30, 41, 59)'
                                                 }}
-                                                className={`h-full shadow-lg  hover:-translate-y-1 cursor-pointer hover:shadow-gray-400
+                                                className={`h-full shadow-lg hover:-translate-y-1 cursor-pointer hover:shadow-gray-400
                                                 ${mode === 'dark'
                                                         ? 'shadow-gray-700'
                                                         : 'shadow-xl'
@@ -51,7 +54,7 @@ function AllBlogs() {
                                                 rounded-xl overflow-hidden`}
                                             >
                                                 {/* Blog Thumbnail  */}
-                                                <img onClick={() => navigate(`/bloginfo/${id}`)} className=" w-full" src={thumbnail} alt="blog" />
+                                                <img onClick={() => navigate(`/bloginfo/${id}`)} className="w-full" src={thumbnail} alt="blog" />
 
                                                 {/* Top Items  */}
                                                 <div className="p-6">
@@ -59,7 +62,7 @@ function AllBlogs() {
                                                     <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1" style={{
                                                         color: mode === 'dark'
                                                             ? 'rgb(226, 232, 240)'
-                                                            : ' rgb(30, 41, 59)'
+                                                            : 'rgb(30, 41, 59)'
                                                     }}>
                                                         {date}
                                                     </h2>
@@ -68,16 +71,16 @@ function AllBlogs() {
                                                     <h1 className="title-font text-lg font-bold text-gray-900 mb-3" style={{
                                                         color: mode === 'dark'
                                                             ? 'rgb(226, 232, 240)'
-                                                            : ' rgb(30, 41, 59)'
+                                                            : 'rgb(30, 41, 59)'
                                                     }}>
                                                         {item.blogs.title}
                                                     </h1>
 
-                                                    {/* Blog Title  */}
+                                                    {/* Blog Category  */}
                                                     <h4 className="title-font text-lg text-gray-900 mb-3" style={{
                                                         color: mode === 'dark'
                                                             ? 'rgb(226, 232, 240)'
-                                                            : ' rgb(30, 41, 59)'
+                                                            : 'rgb(30, 41, 59)'
                                                     }}>
                                                         {item.blogs.category}
                                                     </h4>
@@ -94,8 +97,8 @@ function AllBlogs() {
                         }
                     </div>
                 </div>
-            </section >
-        </Layout >
+            </section>
+        </Layout>
     )
 }
 

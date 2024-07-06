@@ -168,6 +168,7 @@ function CreateBlog() {
                 <div className="mb-3">
                     <textarea
                         label="Enter your Category"
+                        rows={15}
                         className={`shadow-[inset_0_0_4px_rgba(0,0,0,0.6)] w-full rounded-md p-1.5 
                  outline-none ${mode === 'dark'
                                 ? 'placeholder-black'
