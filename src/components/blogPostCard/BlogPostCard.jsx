@@ -14,6 +14,21 @@ function BlogPostCard() {
 
   return (
     <div>
+      <div>
+        <p
+          style={{
+            color: mode === 'dark' ? 'white' : 'black',
+            fontSize: '2.5rem', // Adjust the font size as needed
+            marginLeft: '1in', // 1-inch left margin
+            fontWeight: 'bold', // Make the font bold
+            textAlign: 'left', // Ensures text alignment to the left
+            margin: '0.5in 0 0 1in' // apply top and left margin 1 inch
+          }}
+          className="sm:text-3xl text-xl"
+        >
+          Latest Post
+        </p>
+      </div>
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-10 mx-auto max-w-7xl ">
 
@@ -66,6 +81,7 @@ function BlogPostCard() {
                           }}>
                             {item.blogs.category}
                           </h4>
+                          <h6>Created By: {item.blogs.content} </h6>
                         </div>
                       </div>
                     </div>
@@ -82,7 +98,7 @@ function BlogPostCard() {
           {/* See More Button  */}
           <div className="flex justify-center my-5">
             <Button
-            onClick={() => navigate('/allblogs')}
+              onClick={() => navigate('/allblogs')}
               style={{
                 background: mode === 'dark' ? 'rgb(226, 232, 240)' : 'rgb(30, 41, 59)',
                 color: mode === 'dark' ? 'rgb(30, 41, 59)' : 'rgb(226, 232, 240)'
