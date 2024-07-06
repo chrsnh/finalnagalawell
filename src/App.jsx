@@ -9,6 +9,7 @@ import AdminLogin from "./pages/admin/adminLogin/AdminLogin";
 import Dashboard from "./pages/admin/dashboard/Dashboard";
 import CreateBlog from "./pages/admin/createBlog/CreateBlog";
 import NoPage from "./pages/nopage/Nopage";
+import About from "./pages/about/About";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/allblogs" element={<AllBlogs />} />
             <Route path="/bloginfo/:id" element={<BlogInfo />} />
             <Route path="/adminlogin" element={<AdminLogin />} />
+            <Route path="/about" element={<About/>}/>
             <Route path="/dashboard" element={
               <ProtectedRouteForAdmin>
                 <Dashboard />

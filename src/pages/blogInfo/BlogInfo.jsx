@@ -123,7 +123,7 @@ function BlogInfo() {
                                     'border-gray-600' : 'border-gray-400'}`}
                             />
                             {/* blog Content  */}
-                            <div className="content">
+                            <div className="category">
                                 <div
                                     className={`[&> h1]:text-[32px] [&>h1]:font-bold  [&>h1]:mb-2.5
                             ${mode === 'dark' ? '[&>h1]:text-[#ff4d4d]' : '[&>h1]:text-black'}
@@ -137,7 +137,7 @@ function BlogInfo() {
                             ${mode === 'dark' ? '[&>ol]:text-white' : '[&>ol]:text-black'}
                             ${mode === 'dark' ? '[&>ol]:text-white' : '[&>ol]:text-black'}
                             `}
-                                    dangerouslySetInnerHTML={createMarkup(getBlogs?.blogs?.content)}>
+                                    dangerouslySetInnerHTML={createMarkup(getBlogs?.blogs?.category)}>
                                 </div>
                             </div>
                         </div>

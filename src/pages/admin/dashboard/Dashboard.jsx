@@ -112,16 +112,13 @@ function Dashboard() {
                                     className="text-xs ">
                                     <tr>
                                         <th style={{ color: mode === 'dark' ? 'rgb(30, 41, 59)' : 'white' }} scope="col" className="px-6 py-3">
-                                            S.No
+                                            No.
                                         </th>
                                         <th style={{ color: mode === 'dark' ? 'rgb(30, 41, 59)' : 'white' }} scope="col" className="px-6 py-3">
                                             Thumbnail
                                         </th>
                                         <th style={{ color: mode === 'dark' ? 'rgb(30, 41, 59)' : 'white' }} scope="col" className="px-6 py-3">
                                             Title
-                                        </th>
-                                        <th style={{ color: mode === 'dark' ? 'rgb(30, 41, 59)' : 'white' }} scope="col" className="px-6 py-3">
-                                            Category
                                         </th>
                                         <th style={{ color: mode === 'dark' ? 'rgb(30, 41, 59)' : 'white' }} scope="col" className="px-6 py-3">
                                             Date
@@ -153,10 +150,6 @@ function Dashboard() {
                                                     {/* Blog Title  */}
                                                     <td style={{ color: mode === 'dark' ? 'white' : 'black' }} className="px-6 py-4">
                                                         {item.blogs.title}
-                                                    </td>
-                                                    {/* Blog Category  */}
-                                                    <td style={{ color: mode === 'dark' ? 'white' : 'black' }} className="px-6 py-4">
-                                                        {item.blogs.category}
                                                     </td>
                                                     {/* Blog Date  */}
                                                     <td style={{ color: mode === 'dark' ? 'white' : 'black' }} className="px-6 py-4">

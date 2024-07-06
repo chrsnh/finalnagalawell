@@ -69,7 +69,8 @@ export default function AdminLogin() {
                     <div className="mb-4 rounded-full border border-white/10 bg-white/10 p-2 text-white">
                         <div className=" flex justify-center">
                             {/* Image  */}
-                            <img src="https://cdn-icons-png.flaticon.com/128/727/727399.png" className="h-20 w-20"
+                            <img src="https://cdn-icons-png.flaticon.com/128/727/727399.png" 
+                            className="h-20 w-20"
                             />
                         </div>
                     </div>

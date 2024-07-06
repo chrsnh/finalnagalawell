@@ -73,14 +73,14 @@ function AllBlogs() {
                                                         {item.blogs.title}
                                                     </h1>
 
-                                                    {/* Blog Description  */}
-                                                    <p className="leading-relaxed mb-3" style={{
+                                                    {/* Blog Title  */}
+                                                    <h4 className="title-font text-lg text-gray-900 mb-3" style={{
                                                         color: mode === 'dark'
                                                             ? 'rgb(226, 232, 240)'
                                                             : ' rgb(30, 41, 59)'
                                                     }}>
-                                                        Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.
-                                                    </p>
+                                                        {item.blogs.category}
+                                                    </h4>
                                                 </div>
                                             </div>
                                         </div>

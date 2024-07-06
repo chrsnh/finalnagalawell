@@ -39,8 +39,8 @@ function BlogPostCard() {
                         ${mode === 'dark'
                             ? 'shadow-gray-700'
                             : 'shadow-xl'
-                            } 
-                        rounded-xl overflow-hidden`} 
+                          } 
+                        rounded-xl overflow-hidden`}
                       >
                         {/* Blog Thumbnail  */}
                         <img onClick={() => navigate(`/bloginfo/${id}`)} className=" w-full" src={thumbnail} alt="blog" />
@@ -65,14 +65,15 @@ function BlogPostCard() {
                             {item.blogs.title}
                           </h1>
 
-                          {/* Blog Description  */}
-                          <p className="leading-relaxed mb-3" style={{
+                          {/* Blog Title  */}
+                          <h4 className="title-font text-lg text-gray-900 mb-3" style={{
                             color: mode === 'dark'
                               ? 'rgb(226, 232, 240)'
                               : ' rgb(30, 41, 59)'
                           }}>
-                            Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.
-                          </p>
+                            {item.blogs.title}
+                          </h4>
+
                         </div>
                       </div>
                     </div>
