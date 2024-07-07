@@ -14,10 +14,15 @@ export default function SearchDialog() {
     const handleOpen = () => setOpen(!open);
 
     const context = useContext(myContext);
-    const { mode, searchkey,
-        setSearchkey, getAllBlog } = context;
+    const { mode, searchkey, setSearchkey, getAllBlog } = context;
 
-    const naviagte = useNavigate();
+    const navigate = useNavigate();
+
+    // Filtered blogs based on the search key
+    const filteredBlogs = getAllBlog.filter((obj) => 
+        obj.blogs.title.toLowerCase().includes(searchkey.toLowerCase())
+    );
+
     return (
         <Fragment>
             {/* Search Icon  */}
@@ -25,10 +30,15 @@ export default function SearchDialog() {
                 <AiOutlineSearch size={20} color="white" />
             </div>
             {/* Dialog  */}
-            <Dialog className=" relative right-[1em] w-[25em]  md:right-0 md:w-0 lg:right-0 lg:w-0" open={open} handler={handleOpen} style={{ background: mode === 'light' ? '#C9A9A6' : '#C9A9A6', color: mode === 'dark' ? 'white' : 'black' }}>
+            <Dialog 
+                className="relative right-[1em] w-[25em] md:right-0 md:w-0 lg:right-0 lg:w-0" 
+                open={open} 
+                handler={handleOpen} 
+                style={{ background: mode === 'light' ? '#C9A9A6' : '#C9A9A6', color: mode === 'dark' ? 'white' : 'black' }}
+            >
                 {/* Dialog Body  */}
-                <DialogBody >
-                    <div className="flex w-full   justify-center">
+                <DialogBody>
+                    <div className="flex w-full justify-center">
                         {/* Input  */}
                         <Input
                             color="white"
@@ -36,7 +46,7 @@ export default function SearchDialog() {
                             label="Type here..."
                             value={searchkey}
                             onChange={(e) => setSearchkey(e.target.value)}
-                            className=" bg-[#2C3A47]"
+                            className="bg-[#2C3A47]"
                             name="searchkey"
                             containerProps={{
                                 className: "min-w-[288px]",
@@ -44,32 +54,27 @@ export default function SearchDialog() {
                         />
                     </div>
 
-                    {/* Blog Card  */}
-                    <div className="flex justify-center flex-wrap  sm:mx-auto sm:mb-2 -mx-2  mt-4 mb-2 ">
-                        {
-                            getAllBlog.filter((obj) => obj.blogs.title.toLowerCase().includes(searchkey)).map((item, index) => {
-
-                                return (
-                                    <div key={index} className="p-2 sm:w-1/4 w-full " >
-                                        <div onClick={() => naviagte(`/bloginfo/${item.id}`)} className=" container cursor-pointer mx-auto px-4 bg-gray-200 p-2 rounded-lg ">
-                                            {/* Blog Thumbnail  */}
-                                            <img className="w-20 mb-2 rounded-lg"
-                                                src={item.thumbnail} alt="" />
-
-                                            {/* Blog Date  */}
-                                            <p className="w-40 text-sm">{item.date}</p>
-
-                                            {/* Blog Title  */}
-                                            <h1>{item.blogs.title}</h1>
-                                        </div>
+                    {/* Blog Cards, shown only if there is a search key */}
+                    {searchkey && (
+                        <div className="flex justify-center flex-wrap sm:mx-auto sm:mb-2 -mx-2 mt-4 mb-2">
+                            {filteredBlogs.map((item, index) => (
+                                <div key={index} className="p-2 sm:w-1/4 w-full">
+                                    <div onClick={() => navigate(`/bloginfo/${item.id}`)} className="container cursor-pointer mx-auto px-4 bg-gray-200 p-2 rounded-lg">
+                                        {/* Blog Thumbnail  */}
+                                        <img className="w-20 mb-2 rounded-lg" src={item.thumbnail} alt="" />
+                                        {/* Blog Date  */}
+                                        <p className="w-40 text-sm">{item.date}</p>
+                                        {/* Blog Title  */}
+                                        <h1>{item.blogs.title}</h1>
                                     </div>
-                                )
-                            })}
-                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
 
                     {/* Heading  */}
-                    <div className=" text-center">
-                        <h1 className=" text-gray-600">Powered By Alruch</h1>
+                    <div className="text-center">
+                        <h1 className="text-gray-600">Powered By Alruch</h1>
                     </div>
                 </DialogBody>
             </Dialog>

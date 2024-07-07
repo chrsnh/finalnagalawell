@@ -40,14 +40,14 @@ function Dashboard() {
                             className='text-left font-bold text-2xl mb-2'
                             style={{ color: mode === 'dark' ? 'white' : 'black' }}
                         >
-                            {user ? user.displayName || "User" : "Loading..."}
+                            {user ? user.displayName || "User" : "User"}
                         </h1>
 
                         <h2
                             style={{ color: mode === 'dark' ? 'white' : 'black' }}
                             className="font-semibold"
                         >
-                            {user ? user.email : "Loading..."}
+                            {user ? user.email : "User"}
                         </h2>
                         <h2
                             style={{ color: mode === 'dark' ? 'white' : 'black' }}

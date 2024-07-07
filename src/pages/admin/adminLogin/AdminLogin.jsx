@@ -24,7 +24,7 @@ export default function AdminLogin() {
 
     const login = async () => {
         if (!email || !password) {
-            return toast.success('Fill all required fields')
+            return toast.error('Fill all required fields')
         }
         try {
             const result = await signInWithEmailAndPassword(auth, email, password);

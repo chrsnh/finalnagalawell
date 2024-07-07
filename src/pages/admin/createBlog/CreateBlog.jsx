@@ -30,6 +30,11 @@ function CreateBlog() {
     const navigate = useNavigate();
 
     const addPost = async () => {
+        // Validate required fields
+        if (!blogs.title || !blogs.category || !blogs.content || !thumbnail) {
+            toast.error('Please fill in all required fields.');
+            return;
+        }
         uploadImage();
     }
 

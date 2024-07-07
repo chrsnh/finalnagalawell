@@ -39,7 +39,7 @@ export default function Register() {
             }));
             navigate('/adminlogin');
         } catch (error) {
-            toast.error('Please use your Gmail Account');
+            toast.error('Change your password!');
             console.log(error);
         }
     }
