@@ -35,9 +35,14 @@ function CreateBlog() {
             toast.error('Please fill in all required fields.');
             return;
         }
+    
+        // Add the uid of the current user to the blogs object
+        const user = JSON.parse(localStorage.getItem('admin'));
+        blogs.uid = user.user.uid;
+    
         uploadImage();
     }
-
+    
     const uploadImage = () => {
         if (!thumbnail) return;
         const imageRef = ref(storage, `blogimage/${thumbnail.name}`);
